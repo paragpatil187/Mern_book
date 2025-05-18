@@ -13,8 +13,8 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/login', { email, password }, { withCredentials: true });
-      setUser({ email });
+      await axios.post('/api/auth/login', { email, password }, { withCredentials: true });
+      setUser({ email }); // Or: setUser(data) if backend returns user object
       navigate('/');
     } catch (err) {
       alert(err.response?.data?.message || 'Login failed');
